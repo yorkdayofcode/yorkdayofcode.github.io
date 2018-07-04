@@ -56,8 +56,32 @@
 </script>
 
 <script>
-    eval("tri()");
-    
+    Function("tri(); square();")()(
+     tri, square 
+    );
+    function square() {
+    var canvasElement = document.querySelector("#canvas");
+    var context = canvasElement.getContext("2d");
+
+    // the triangle
+    context.beginPath();
+    context.moveTo(200, 100);
+    context.lineTo(200, 300);
+    context.lineTo(400, 300);
+    context.closePath();
+
+    // the outline
+    context.lineWidth = 10;
+    context.strokeStyle = '#666666';
+    context.stroke();
+
+    // the fill color
+    context.fillStyle = "#FFCC00";
+    context.fill();
+
+    var jpegUrl = canvas.toDataURL("image/jpeg");
+    document.write(jpegUrl);
+    }
     function tri() {
     var canvasElement = document.querySelector("#canvas");
     var context = canvasElement.getContext("2d");
