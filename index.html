@@ -10,22 +10,78 @@
         right: 0;
         bottom: 0;
         left: 0;
+        width: 50%
     }
+
+    #compile {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    #canvas {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 50%
+    }
+
 </style>
 </head>
 <body>
 
-<div id="editor">
+<div id="editor" style="width: 50%">
     Square(Red)
     Triangle(100)
     Text("Hello York")
 </div>
+
+<button id="compile">
+    Run Code
+</button>
     
+<canvas id="canvas">
+
+</canvas>
+
 <script src="/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/monokai");
     editor.session.setMode("ace/mode/javascript");
+    editor.setOptions({
+        enableBasicAutocompletion: true
+    });
 </script>
+
+<script>
+    eval("tri()");
+    
+    function tri() {
+    var canvasElement = document.querySelector("#canvas");
+    var context = canvasElement.getContext("2d");
+
+    // the triangle
+    context.beginPath();
+    context.moveTo(100, 100);
+    context.lineTo(100, 300);
+    context.lineTo(300, 300);
+    context.closePath();
+
+    // the outline
+    context.lineWidth = 10;
+    context.strokeStyle = '#666666';
+    context.stroke();
+
+    // the fill color
+    context.fillStyle = "#FFCC00";
+    context.fill();
+
+    var jpegUrl = canvas.toDataURL("image/jpeg");
+    document.write(jpegUrl);
+}
+</script>
+
 </body>
 </html>
