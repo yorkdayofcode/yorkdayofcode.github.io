@@ -1,0 +1,25 @@
+#editor { 
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 50%
+}
+
+#compile {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 10;
+}
+
+#canvas {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    bottom: 0px;
+    width: 50%;
+    height: 90%;
+    background-color:   gray;
+}
