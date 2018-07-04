@@ -36,9 +36,20 @@ function run()
     clearCanvas(canvasElement, canvasContext);
     var script = getScript();
 
-    Function(script)()(
-        Triangle, Square 
-    );
+    Function(script)()
+}
+
+function Line() {
+    var canvasElement = getCanvas();
+    var context = getCanvasContext(canvasElement);  
+
+    context.lineWidth = 1;
+    context.strokeStyle = '#00FF00';   
+    
+    context.beginPath();
+    context.moveTo(0, 0);
+    context.lineTo(200, 100);
+    context.stroke();
 }
 
 function Square() {
