@@ -1,46 +1,6 @@
-var editor = ace.edit("editor");
-editor.setTheme("ace/theme/monokai");
-editor.session.setMode("ace/mode/javascript");
-editor.setOptions({
-     fontSize: "20pt"
-   });
-
 const RED = "#FF0000";
 const GREEN = "#00FF00";
 const BLUE = "#0000FF";
-
-function getCanvas() {
-    return document.querySelector("#canvas");
-}
-
-function getCanvasContext(canvasElement) {
-    return canvasElement.getContext("2d");
-}
- 
-function clearCanvas(canvasElement, context) {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-}
-
-function getScript() {
-    var editor = ace.edit("editor");
-    return editor.getValue();
-}
-
-function convertCanvasToImage() {
-    var jpegUrl = canvas.toDataURL("image/jpeg");
-//  document.write(jpegUrl);
-}
-
-function run()
-{
-    var canvasElement = getCanvas();
-    var canvasContext = getCanvasContext(canvasElement);
-
-    clearCanvas(canvasElement, canvasContext);
-    var script = getScript();
-
-    Function(script)()
-}
 
 function Line() {
     var canvasElement = getCanvas();
@@ -77,7 +37,6 @@ function Square(colour = RED, size = 100, x = 100, y = 0) {
     context.fillStyle = colour;
     context.fill();
 }
-
 
 function Triangle(colour = RED, size = 100, x = 100, y = 0) {
     var canvasElement = getCanvas();
