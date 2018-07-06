@@ -2,9 +2,8 @@ var editor = ace.edit("editor");
 editor.setTheme("ace/theme/monokai");
 editor.session.setMode("ace/mode/javascript");
 editor.setOptions({
-    fontFamily: "tahoma",
-    fontSize: "20pt"
-  });
+     fontSize: "20pt"
+   });
 
 function getCanvas() {
     return document.querySelector("#canvas");
