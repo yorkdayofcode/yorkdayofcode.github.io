@@ -17,35 +17,23 @@ function save() {
         });
 }
 
+function getIframe() {
+    return document.getElementById('iframe');
+}
+
 function run()
 {
-    var canvasElement = getCanvas();
-    var canvasContext = getCanvasContext(canvasElement);
-
-    clearCanvas(canvasElement, canvasContext);
-    var script = getScript();
-
-    Function(script)()
+    var iframe = getIframe();
+    iframe.contentWindow.run();
 }
 
-function getCanvas() {
-    return document.querySelector("#canvas");
-}
-
-function getCanvasContext(canvasElement) {
-    return canvasElement.getContext("2d");
-}
- 
-function clearCanvas(canvasElement, context) {
-    context.clearRect(0, 0, canvas.width, canvas.height);
+function reloadFrame() {
+    var iframe = getIframe();
+    iframe.src += '';
 }
 
 function getScript() {
+    // Called by iFrame  (using parent.getScript())
     var editor = ace.edit("editor");
     return editor.getValue();
 }
-
-function convertCanvasToImage() {
-    var jpegUrl = canvas.toDataURL("image/jpeg");
-//  document.write(jpegUrl);
-}   
