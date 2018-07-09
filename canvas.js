@@ -19,6 +19,9 @@ function getCanvasContext(canvasElement) {
 }
  
 function clearCanvas(canvasElement, context) {
+    canvasElement.setAttribute('width', '500');
+    canvasElement.setAttribute('height', '500');
+
     context.clearRect(0, 0, canvasElement.width, canvasElement.height);
 }
 
