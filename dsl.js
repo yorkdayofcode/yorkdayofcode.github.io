@@ -1,6 +1,8 @@
 const RED = "#FF0000";
 const GREEN = "#00FF00";
 const BLUE = "#0000FF";
+const BLACK = "#000000";
+const WHITE = "#FFFFFF";
 
 function Line() {
     var canvasElement = getCanvas();
@@ -13,6 +15,17 @@ function Line() {
     context.moveTo(0, 0);
     context.lineTo(200, 100);
     context.stroke();
+}
+
+function Circle(colour = RED, size = 100, x = 100, y = 0) {
+    var canvasElement = getCanvas();
+    var context = getCanvasContext(canvasElement);
+
+    context.beginPath();
+    context.arc(x, y, size, 0, 2 * Math.PI);
+    context.stroke();
+    context.fillStyle = colour;
+    context.fill();
 }
 
 function Square(colour = RED, size = 100, x = 100, y = 0) {
