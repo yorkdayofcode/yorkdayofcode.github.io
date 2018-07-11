@@ -8,10 +8,43 @@ editor.setOptions({
    });
 
 function load() {
-    swal("Load Canvas", "Enter the name of your canvas.  (For example Duck.Dog.Fish)", {
-          content: "input",
+
+    swal({
+        title: "Load Canvas",
+        text: "Enter the name of your canvas.  (For example Duck.Dog.Fish)",  
+        content: "input",
+        }).then(function (code) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", endpoint + '/api/canvasses/'+code, true);
+            
+            xhr.setRequestHeader("Content-Type", "application/json");
+            
+            xhr.onreadystatechange = function() {
+                if(this.readyState == XMLHttpRequest.DONE) {
+                    if (xhr.status == 200)
+                    {
+                        var result = JSON.parse(xhr.responseText);
+                        setScript(result.code);
+                        run();
+
+                        swal("Canvas Successfully Loaded", "Your canvas was successfully loaded", {
+                              button: "OK",
+                            });
+                    }
+                    else
+                    {
+                        swal("Canvas Not Loaded", "A status code of " + xhr.status + " was reported. (" + xhr.responseText + ")", {
+                              button: "OK",
+                            });
+                    }
+                }
+            }
+
+            xhr.send(); 
         });
 }
+//number.degree.others
+//open.shake.collection
 
 function save() {
 
@@ -68,4 +101,9 @@ function getScript() {
     // Called by iFrame  (using parent.getScript())
     var editor = ace.edit("editor");
     return editor.getValue();
+}
+
+function setScript(code) {
+    var editor = ace.edit("editor");
+    return editor.setValue(code);
 }
