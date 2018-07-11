@@ -5,8 +5,8 @@ const endpoint = 'https://apiforyorkdayofcode.azurewebsites.net';
 
 function Initialise() {
     setUpEditor();
-    var previousCanvasDisplayed = displayCanvasIfSupplied();
-    if (!previousCanvasDisplayed) hopscotch.startTour(tour);
+    var previousCanvasDisplayed = displayCanvasIfSuppliedInQueryString();
+    if (!previousCanvasDisplayed) startTour();  //see tour.js
 }
 
 function setUpEditor() {
@@ -18,9 +18,13 @@ function setUpEditor() {
     });
 }
 
-function displayCanvasIfSupplied() {
-    var canvasID = getQueryVariable("id");
-    if (canvasID !== "" && canvasID !== null && canvasID !== undefined) {
+function hasValue(what) {
+    return what !== "" && what !== null && what !== undefined;
+}
+
+function displayCanvasIfSuppliedInQueryString() {
+    var canvasID = getQueryStringVariable("id");
+    if (hasValue(canvasID)) {
         loadCanvas(canvasID);
         return true;
     }
@@ -29,7 +33,7 @@ function displayCanvasIfSupplied() {
     }
 }
 
-function getQueryVariable(variable) {
+function getQueryStringVariable(variable) {
     var query = window.location.search.substring(1);
     var vars = query.split('&');
     for (var i = 0; i < vars.length; i++) {
@@ -49,6 +53,8 @@ function load() {
 }
 
 function loadCanvas(code) {
+
+    if (!hasValue(code)) return;
 
     var xhr = new XMLHttpRequest();
     xhr.open("GET", endpoint + '/api/canvasses/' + code, true);
@@ -100,7 +106,42 @@ function save() {
                 });
             }
             else {
-                swal("Canvas Not Saved", "A status code of " + xhr.status + " was reported.", {
+                swal("Canvas Not Saved", "A status code of " + xhr.status + " was reported. (" + xhr.responseText + ")", {
+                    button: "OK",
+                });
+            }
+        }
+    }
+
+    var json = JSON.stringify(data);
+    xhr.send(json);
+}
+
+function registerUser() {
+
+    var data =
+    {
+        "gender": "male",
+        "agegroup": "10-20",
+        "location": "heworth",
+        "experience": "beginner"
+    }
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", endpoint + '/api/register', true);
+
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.onreadystatechange = function () {
+        if (this.readyState == XMLHttpRequest.DONE) {
+            if (xhr.status == 200) {
+                var result = JSON.parse(xhr.responseText);
+                swal("Registration Complete", "Your unique user ID is " + result.id, {
+                    button: "OK",
+                });
+            }
+            else {
+                swal("Registration Failed", "A status code of " + xhr.status + " was reported. (" + xhr.responseText + ")", {
                     button: "OK",
                 });
             }

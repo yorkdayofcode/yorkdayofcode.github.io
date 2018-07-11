@@ -27,3 +27,7 @@
       }
     ]
   };
+
+  function startTour() {
+    hopscotch.startTour(tour);
+  }

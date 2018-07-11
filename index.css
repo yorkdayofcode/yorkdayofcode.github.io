@@ -28,6 +28,15 @@
     height: 10;
 }
 
+#registerUser {
+    position: absolute;
+    top: 0;
+    right: 300px;
+    height: 10;
+}
+
+
+
 #iframe {
     position: absolute;
     top: 30px;
