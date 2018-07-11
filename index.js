@@ -5,7 +5,8 @@ const endpoint = 'https://apiforyorkdayofcode.azurewebsites.net';
 
 function Initialise() {
     setUpEditor();
-    displayCanvasIfSupplied();
+    var previousCanvasDisplayed = displayCanvasIfSupplied();
+    if (!previousCanvasDisplayed) hopscotch.startTour(tour);
 }
 
 function setUpEditor() {
@@ -21,6 +22,10 @@ function displayCanvasIfSupplied() {
     var canvasID = getQueryVariable("id");
     if (canvasID !== "" && canvasID !== null && canvasID !== undefined) {
         loadCanvas(canvasID);
+        return true;
+    }
+    else {
+        return false;
     }
 }
 

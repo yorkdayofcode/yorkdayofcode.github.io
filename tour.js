@@ -1,4 +1,3 @@
-  // Define the tour!
   var tour = {
     id: "hopscotch-tour",
     steps: [
@@ -23,11 +22,8 @@
       {
         title: "Canvas",
         content: "If all has gone to plan,  then your picture will be shown here.",
-        target: document.querySelector("#canvas"),
+        target: document.querySelector("#iframe"),
         placement: "left"
       }
     ]
   };
-
-  // Start the tour!
-  hopscotch.startTour(tour);
