@@ -25,9 +25,6 @@ function clearCanvas(canvasElement, context) {
     context.clearRect(0, 0, canvasElement.width, canvasElement.height);
 }
 
-
-
 function convertCanvasToImage() {
-    var jpegUrl = canvas.toDataURL("image/jpeg");
-//  document.write(jpegUrl);
+   return canvas.toDataURL("image/jpeg").replace(/^data:image\/(png|jpeg);base64,/, '');
 }   
