@@ -1,10 +1,10 @@
 var Colour = function(){
 
-    const RED = "#FF0000";
-    const GREEN = "#00FF00";
-    const BLUE = "#0000FF";
-    const BLACK = "#000000";
-    const WHITE = "#FFFFFF";
+    const Red = "#FF0000";
+    const Green = "#00FF00";
+    const Blue = "#0000FF";
+    const Black = "#000000";
+    const White = "#FFFFFF";
 
 }
 

@@ -210,11 +210,11 @@ var Triangle = function Triangle() {
 "use strict";
 var Colour = function Colour() {
 
-    var RED = "#FF0000";
-    var GREEN = "#00FF00";
-    var BLUE = "#0000FF";
-    var BLACK = "#000000";
-    var WHITE = "#FFFFFF";
+    var Red = "#FF0000";
+    var Green = "#00FF00";
+    var Blue = "#0000FF";
+    var Black = "#000000";
+    var White = "#FFFFFF";
 };
 
 /* harmony default export */ __webpack_exports__["a"] = ({ Colour: Colour });
