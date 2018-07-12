@@ -1,15 +1,4 @@
 
-// function run()
-// {
-//     var canvasElement = getCanvas();
-//     var canvasContext = getCanvasContext(canvasElement);
-
-//     clearCanvas(canvasElement, canvasContext);
-//     var script = parent.getScript();
-
-//     Function(script)()
-// }
-
 function getCanvas() {
     return document.querySelector("#canvas");
 }
