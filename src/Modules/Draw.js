@@ -1,10 +1,7 @@
-export const RED = "#FF0000";
-export const GREEN = "#00FF00";
-export const BLUE = "#0000FF";
-export const BLACK = "#000000";
-export const WHITE = "#FFFFFF";
 
-export function Line() {
+import Colour from './Colour';
+
+var Line = function() {
     var canvasElement = getCanvas();
     var context = getCanvasContext(canvasElement);  
 
@@ -17,7 +14,7 @@ export function Line() {
     context.stroke();
 }
 
-export function Circle(colour = RED, size = 100, x = 100, y = 0) {
+var Circle = function(colour = Colour.RED, size = 100, x = 100, y = 0) {
     var canvasElement = getCanvas();
     var context = getCanvasContext(canvasElement);
 
@@ -28,7 +25,7 @@ export function Circle(colour = RED, size = 100, x = 100, y = 0) {
     context.fill();
 }
 
-export function Square(colour = RED, size = 100, x = 100, y = 0) {
+var Square = function(colour = Colour.RED, size = 100, x = 100, y = 0) {
     var canvasElement = getCanvas();
     var context = getCanvasContext(canvasElement);
 
@@ -51,7 +48,7 @@ export function Square(colour = RED, size = 100, x = 100, y = 0) {
     context.fill();
 }
 
-export function Triangle(colour = RED, size = 100, x = 100, y = 0) {
+var Triangle = function(colour = Colour.RED, size = 100, x = 100, y = 0) {
     var canvasElement = getCanvas();
     var context = getCanvasContext(canvasElement);
 
@@ -71,3 +68,6 @@ export function Triangle(colour = RED, size = 100, x = 100, y = 0) {
     context.fillStyle = colour;
     context.fill();
 }
+ 
+
+export default { Line,Circle,Square,Triangle };

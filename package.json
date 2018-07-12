@@ -10,6 +10,8 @@
     "d3-color": "^1.2.0"
   },
   "devDependencies": {
+    "browser-sync": "^2.24.5",
+    "browser-sync-webpack-plugin": "2.0.1",
     "laravel-mix": "^2.1.11"
   },
   "scripts": {

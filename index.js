@@ -5,8 +5,8 @@ const endpoint = 'https://apiforyorkdayofcode.azurewebsites.net';
 
 function Initialise() {
     setUpEditor();
-    var previousCanvasDisplayed = displayCanvasIfSuppliedInQueryString();
-    if (!previousCanvasDisplayed) startTour();  //see tour.js
+    //var previousCanvasDisplayed = displayCanvasIfSuppliedInQueryString();
+   // if (!previousCanvasDisplayed) startTour();  //see tour.js
 }
 
 function setUpEditor() {
@@ -158,7 +158,7 @@ function getIframe() {
 
 function run() {
     var iframe = getIframe();
-    iframe.contentWindow.run();
+    iframe.contentWindow.ydoc.run();
 }
 
 function reloadFrame() {

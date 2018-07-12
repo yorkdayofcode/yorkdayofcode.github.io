@@ -77,41 +77,48 @@ module.exports = __webpack_require__(3);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["run"] = run;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Modules_DrawingMethods__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Modules_Draw__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Modules_Colour__ = __webpack_require__(10);
 
 
-function run() {
+
+var run = function run() {
     var canvasElement = getCanvas();
     var canvasContext = getCanvasContext(canvasElement);
 
     clearCanvas(canvasElement, canvasContext);
     var script = parent.getScript();
 
-    Function(script)();
-}
+    var codeRunner = new Function("Draw", "Colour", script);
+    codeRunner(__WEBPACK_IMPORTED_MODULE_0__Modules_Draw__["a" /* default */], __WEBPACK_IMPORTED_MODULE_1__Modules_Colour__["a" /* default */]);
+};
+
+window.ydoc = {
+    run: run
+};
 
 /***/ }),
-/* 2 */
+/* 2 */,
+/* 3 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export RED */
-/* unused harmony export GREEN */
-/* unused harmony export BLUE */
-/* unused harmony export BLACK */
-/* unused harmony export WHITE */
-/* unused harmony export Line */
-/* unused harmony export Circle */
-/* unused harmony export Square */
-/* unused harmony export Triangle */
-var RED = "#FF0000";
-var GREEN = "#00FF00";
-var BLUE = "#0000FF";
-var BLACK = "#000000";
-var WHITE = "#FFFFFF";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Colour__ = __webpack_require__(10);
 
-function Line() {
+
+
+var Line = function Line() {
     var canvasElement = getCanvas();
     var context = getCanvasContext(canvasElement);
 
@@ -122,10 +129,10 @@ function Line() {
     context.moveTo(0, 0);
     context.lineTo(200, 100);
     context.stroke();
-}
+};
 
-function Circle() {
-    var colour = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : RED;
+var Circle = function Circle() {
+    var colour = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : __WEBPACK_IMPORTED_MODULE_0__Colour__["a" /* default */].RED;
     var size = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 100;
     var x = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 100;
     var y = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
@@ -138,10 +145,10 @@ function Circle() {
     context.stroke();
     context.fillStyle = colour;
     context.fill();
-}
+};
 
-function Square() {
-    var colour = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : RED;
+var Square = function Square() {
+    var colour = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : __WEBPACK_IMPORTED_MODULE_0__Colour__["a" /* default */].RED;
     var size = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 100;
     var x = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 100;
     var y = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
@@ -166,10 +173,10 @@ function Square() {
     // the fill color
     context.fillStyle = colour;
     context.fill();
-}
+};
 
-function Triangle() {
-    var colour = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : RED;
+var Triangle = function Triangle() {
+    var colour = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : __WEBPACK_IMPORTED_MODULE_0__Colour__["a" /* default */].RED;
     var size = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 100;
     var x = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 100;
     var y = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
@@ -192,13 +199,25 @@ function Triangle() {
     // the fill color
     context.fillStyle = colour;
     context.fill();
-}
+};
+
+/* harmony default export */ __webpack_exports__["a"] = ({ Line: Line, Circle: Circle, Square: Square, Triangle: Triangle });
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports) {
+/* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+"use strict";
+var Colour = function Colour() {
+
+    var RED = "#FF0000";
+    var GREEN = "#00FF00";
+    var BLUE = "#0000FF";
+    var BLACK = "#000000";
+    var WHITE = "#FFFFFF";
+};
+
+/* harmony default export */ __webpack_exports__["a"] = ({ Colour: Colour });
 
 /***/ })
 /******/ ]);
