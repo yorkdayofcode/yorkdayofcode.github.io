@@ -8,9 +8,9 @@ function chessBoard() {
         for (var i = 0; i<8; i++)
         {
             if ((i+y) % 2 == 0)
-                Square(GREEN, 20, 40 + (i*width), 10 + (y*height)) 
+                Draw.Square(Colour.Random(), 20, 40 + (i*width), 10 + (y*height)) 
             else
-                Square(RED, 20, 40 + (i*width), 10 + (y*height)) 
+                Draw.Square(Colour.Random(), 20, 40 + (i*width), 10 + (y*height)) 
         }
     }
 }
