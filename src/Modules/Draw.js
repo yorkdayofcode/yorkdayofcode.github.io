@@ -1,9 +1,10 @@
 
 import Colour from './Colour';
+import Canvas from './Canvas';
 
 var Line = function() {
-    var canvasElement = getCanvas();
-    var context = getCanvasContext(canvasElement);  
+
+    var context = Canvas.getContext();  
 
     context.lineWidth = 1;
     context.strokeStyle = '#00FF00';   
@@ -15,8 +16,8 @@ var Line = function() {
 }
 
 var Circle = function(colour = Colour.Red, size = 100, x = 100, y = 0) {
-    var canvasElement = getCanvas();
-    var context = getCanvasContext(canvasElement);
+    
+    var context = Canvas.getContext();
 
     context.beginPath();
     context.arc(x, y, size, 0, 2 * Math.PI);
@@ -27,10 +28,7 @@ var Circle = function(colour = Colour.Red, size = 100, x = 100, y = 0) {
 
 var Square = function(colour = Colour.Red, size = 100, x = 100, y = 0) {
 
-    console.log(colour);
-
-    var canvasElement = getCanvas();
-    var context = getCanvasContext(canvasElement);
+    var context = Canvas.getContext();
 
     // the square
     context.beginPath();
@@ -52,8 +50,8 @@ var Square = function(colour = Colour.Red, size = 100, x = 100, y = 0) {
 }
 
 var Triangle = function(colour = Colour.Red, size = 100, x = 100, y = 0) {
-    var canvasElement = getCanvas();
-    var context = getCanvasContext(canvasElement);
+    
+    var context = Canvas.getContext();
 
     // the triangle
     context.beginPath();
@@ -72,5 +70,4 @@ var Triangle = function(colour = Colour.Red, size = 100, x = 100, y = 0) {
     context.fill();
 }
  
-
 export default { Line, Circle, Square, Triangle };

@@ -1,12 +1,10 @@
 import Draw from './Modules/Draw';
 import Colour from './Modules/Colour';
+import Canvas from './Modules/Canvas';
 
-var run = function()
+var Run = function()
 {
-    var canvasElement = getCanvas();
-    var canvasContext = getCanvasContext(canvasElement);
-
-    clearCanvas(canvasElement, canvasContext);
+    Canvas.clear();
     var script = parent.getScript();
     
    var codeRunner = new Function("Draw", "Colour",script);
@@ -14,5 +12,6 @@ var run = function()
 }
 
 window.ydoc = {
-    run
+    Run, 
+    Canvas
 };

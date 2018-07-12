@@ -89,7 +89,7 @@ function save() {
     var data =
     {
         "code": getScript(),
-        "image": iframe.contentWindow.convertCanvasToImage()
+        "image": iframe.contentWindow.Canvas.convertToImage()
     }
 
     var xhr = new XMLHttpRequest();
@@ -158,7 +158,7 @@ function getIframe() {
 
 function run() {
     var iframe = getIframe();
-    iframe.contentWindow.ydoc.run();
+    iframe.contentWindow.ydoc.Run();
 }
 
 function reloadFrame() {
