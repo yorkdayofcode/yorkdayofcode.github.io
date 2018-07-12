@@ -14,7 +14,7 @@ var Line = function() {
     context.stroke();
 }
 
-var Circle = function(colour = Colour.RED, size = 100, x = 100, y = 0) {
+var Circle = function(colour = Colour.Red, size = 100, x = 100, y = 0) {
     var canvasElement = getCanvas();
     var context = getCanvasContext(canvasElement);
 
@@ -25,7 +25,10 @@ var Circle = function(colour = Colour.RED, size = 100, x = 100, y = 0) {
     context.fill();
 }
 
-var Square = function(colour = Colour.RED, size = 100, x = 100, y = 0) {
+var Square = function(colour = Colour.Red, size = 100, x = 100, y = 0) {
+
+    console.log(colour);
+    
     var canvasElement = getCanvas();
     var context = getCanvasContext(canvasElement);
 
@@ -48,7 +51,7 @@ var Square = function(colour = Colour.RED, size = 100, x = 100, y = 0) {
     context.fill();
 }
 
-var Triangle = function(colour = Colour.RED, size = 100, x = 100, y = 0) {
+var Triangle = function(colour = Colour.Red, size = 100, x = 100, y = 0) {
     var canvasElement = getCanvas();
     var context = getCanvasContext(canvasElement);
 
