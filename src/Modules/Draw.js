@@ -28,7 +28,7 @@ var Circle = function(colour = Colour.Red, size = 100, x = 100, y = 0) {
 var Square = function(colour = Colour.Red, size = 100, x = 100, y = 0) {
 
     console.log(colour);
-    
+
     var canvasElement = getCanvas();
     var context = getCanvasContext(canvasElement);
 
@@ -73,4 +73,4 @@ var Triangle = function(colour = Colour.Red, size = 100, x = 100, y = 0) {
 }
  
 
-export default { Line,Circle,Square,Triangle };
+export default { Line, Circle, Square, Triangle };
