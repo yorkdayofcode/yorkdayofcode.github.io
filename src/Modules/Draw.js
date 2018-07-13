@@ -7,7 +7,7 @@ var Line = function() {
     var context = Canvas.getContext();  
 
     context.lineWidth = 1;
-    context.strokeStyle = '#00FF00';   
+    context.strokeStyle = Colour.withName('grey');   
     
     context.beginPath();
     context.moveTo(0, 0);
@@ -15,7 +15,7 @@ var Line = function() {
     context.stroke();
 }
 
-var Circle = function(colour = Colour.Red, size = 100, x = 100, y = 0) {
+var Circle = function(colour = Colour.Random(), size = 100, x = 100, y = 0) {
     
     var context = Canvas.getContext();
 
@@ -26,7 +26,7 @@ var Circle = function(colour = Colour.Red, size = 100, x = 100, y = 0) {
     context.fill();
 }
 
-var Square = function(colour = Colour.Red, size = 100, x = 100, y = 0) {
+var Square = function(colour = Colour.Random(), size = 100, x = 100, y = 0, outline=false) {
 
     var context = Canvas.getContext();
 
@@ -40,16 +40,18 @@ var Square = function(colour = Colour.Red, size = 100, x = 100, y = 0) {
     context.closePath();
 
     // the outline
+    if(outline){
     context.lineWidth = 2;
-    context.strokeStyle = '#666666';
+    context.strokeStyle = Colour.withName('grey');
     context.stroke();
+    }
 
     // the fill color
     context.fillStyle = colour;
     context.fill();
 }
 
-var Triangle = function(colour = Colour.Red, size = 100, x = 100, y = 0) {
+var Triangle = function(colour = Colour.Random(), size = 100, x = 100, y = 0, outline=false) {
     
     var context = Canvas.getContext();
 
@@ -61,9 +63,11 @@ var Triangle = function(colour = Colour.Red, size = 100, x = 100, y = 0) {
     context.closePath();
 
     // the outline
-    context.lineWidth = 2;
-    context.strokeStyle = '#666666';
-    context.stroke();
+    if(outline){
+        context.lineWidth = 2;
+        context.strokeStyle = Colour.withName('grey');
+        context.stroke();
+    }
 
     // the fill color
     context.fillStyle = colour;

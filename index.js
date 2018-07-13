@@ -14,7 +14,7 @@ function setUpEditor() {
     editor.setTheme("ace/theme/monokai");
     editor.session.setMode("ace/mode/javascript");
     editor.setOptions({
-        fontSize: "20pt"
+        fontSize: "11pt"
     });
 }
 
