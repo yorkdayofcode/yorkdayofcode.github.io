@@ -14,7 +14,7 @@ function setUpEditor() {
     editor.setTheme("ace/theme/monokai");
     editor.session.setMode("ace/mode/javascript");
     editor.setOptions({
-        fontSize: "20pt"
+        fontSize: "11pt"
     });
 }
 
@@ -89,7 +89,7 @@ function save() {
     var data =
     {
         "code": getScript(),
-        "image": iframe.contentWindow.convertCanvasToImage()
+        "image": iframe.contentWindow.Canvas.convertToImage()
     }
 
     var xhr = new XMLHttpRequest();
@@ -158,7 +158,7 @@ function getIframe() {
 
 function run() {
     var iframe = getIframe();
-    iframe.contentWindow.run();
+    iframe.contentWindow.ydoc.Run();
 }
 
 function reloadFrame() {

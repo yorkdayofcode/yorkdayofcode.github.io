@@ -1,15 +1,13 @@
-const RED = "#FF0000";
-const GREEN = "#00FF00";
-const BLUE = "#0000FF";
-const BLACK = "#000000";
-const WHITE = "#FFFFFF";
 
-function Line() {
-    var canvasElement = getCanvas();
-    var context = getCanvasContext(canvasElement);  
+import Colour from './Colour';
+import Canvas from './Canvas';
+
+var Line = function() {
+
+    var context = Canvas.getContext();  
 
     context.lineWidth = 1;
-    context.strokeStyle = '#00FF00';   
+    context.strokeStyle = Colour.withName('grey');   
     
     context.beginPath();
     context.moveTo(0, 0);
@@ -17,9 +15,9 @@ function Line() {
     context.stroke();
 }
 
-function Circle(colour = RED, size = 100, x = 100, y = 0) {
-    var canvasElement = getCanvas();
-    var context = getCanvasContext(canvasElement);
+var Circle = function(colour = Colour.Random(), size = 100, x = 100, y = 0) {
+    
+    var context = Canvas.getContext();
 
     context.beginPath();
     context.arc(x, y, size, 0, 2 * Math.PI);
@@ -28,9 +26,9 @@ function Circle(colour = RED, size = 100, x = 100, y = 0) {
     context.fill();
 }
 
-function Square(colour = RED, size = 100, x = 100, y = 0) {
-    var canvasElement = getCanvas();
-    var context = getCanvasContext(canvasElement);
+var Square = function(colour = Colour.Random(), size = 100, x = 100, y = 0, outline=false) {
+
+    var context = Canvas.getContext();
 
     // the square
     context.beginPath();
@@ -42,18 +40,20 @@ function Square(colour = RED, size = 100, x = 100, y = 0) {
     context.closePath();
 
     // the outline
+    if(outline){
     context.lineWidth = 2;
-    context.strokeStyle = '#666666';
+    context.strokeStyle = Colour.withName('grey');
     context.stroke();
+    }
 
     // the fill color
     context.fillStyle = colour;
     context.fill();
 }
 
-function Triangle(colour = RED, size = 100, x = 100, y = 0) {
-    var canvasElement = getCanvas();
-    var context = getCanvasContext(canvasElement);
+var Triangle = function(colour = Colour.Random(), size = 100, x = 100, y = 0, outline=false) {
+    
+    var context = Canvas.getContext();
 
     // the triangle
     context.beginPath();
@@ -63,11 +63,15 @@ function Triangle(colour = RED, size = 100, x = 100, y = 0) {
     context.closePath();
 
     // the outline
-    context.lineWidth = 2;
-    context.strokeStyle = '#666666';
-    context.stroke();
+    if(outline){
+        context.lineWidth = 2;
+        context.strokeStyle = Colour.withName('grey');
+        context.stroke();
+    }
 
     // the fill color
     context.fillStyle = colour;
     context.fill();
 }
+ 
+export default { Line, Circle, Square, Triangle };
