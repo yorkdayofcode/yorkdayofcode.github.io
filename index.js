@@ -59,7 +59,8 @@ function loadCanvas(code) {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", endpoint + '/api/canvasses/' + code, true);
 
-    xhr.setRequestHeader("Content-Type", "application/json");
+    setContentTypeAsJson(xhr);
+    addBearerTokenToRequest(xhr);
 
     xhr.onreadystatechange = function () {
         if (this.readyState == XMLHttpRequest.DONE) {
@@ -95,7 +96,8 @@ function save() {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", endpoint + '/api/canvasses', true);
 
-    xhr.setRequestHeader("Content-Type", "application/json");
+    setContentTypeAsJson(xhr);
+    addBearerTokenToRequest(xhr);
 
     xhr.onreadystatechange = function () {
         if (this.readyState == XMLHttpRequest.DONE) {
@@ -129,14 +131,16 @@ function registerUser() {
 
     var xhr = new XMLHttpRequest();
     xhr.open("POST", endpoint + '/api/users', true);
-
-    xhr.setRequestHeader("Content-Type", "application/json");
+    setContentTypeAsJson(xhr);
 
     xhr.onreadystatechange = function () {
         if (this.readyState == XMLHttpRequest.DONE) {
             if (xhr.status == 200) {
                 var result = JSON.parse(xhr.responseText);
-                swal("Registration Complete", "Your unique user ID is " + result.access_token, {
+
+                storeToken(result.access_token);
+
+                swal("Registration Complete", "You have been registered as a user", {
                     button: "OK",
                 });
             }
@@ -150,6 +154,27 @@ function registerUser() {
 
     var json = JSON.stringify(data);
     xhr.send(json);
+}
+
+function addBearerTokenToRequest(xhr) {
+    var token = getToken();
+    xhr.setRequestHeader("Authorization", "Bearer " + token);
+}
+
+function setContentTypeAsJson(xhr) {
+    xhr.setRequestHeader("Content-Type", "application/json");
+}
+
+function storeToken(access_token) {
+    if (typeof(Storage) !== "undefined") {
+        localStorage.setItem("york_day_code_access_token", access_token);
+    }
+}
+
+function getToken() {
+    if (typeof(Storage) !== "undefined") {
+        return localStorage.york_day_code_access_token;
+    }
 }
 
 function getIframe() {
