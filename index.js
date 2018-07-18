@@ -89,7 +89,7 @@ function save() {
     var data =
     {
         "code": getScript(),
-        "image": iframe.contentWindow.Canvas.convertToImage()
+        "image": iframe.contentWindow.ydoc.ConvertToImage()
     }
 
     var xhr = new XMLHttpRequest();
@@ -128,7 +128,7 @@ function registerUser() {
     }
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", endpoint + '/api/register', true);
+    xhr.open("POST", endpoint + '/api/users', true);
 
     xhr.setRequestHeader("Content-Type", "application/json");
 
@@ -136,7 +136,7 @@ function registerUser() {
         if (this.readyState == XMLHttpRequest.DONE) {
             if (xhr.status == 200) {
                 var result = JSON.parse(xhr.responseText);
-                swal("Registration Complete", "Your unique user ID is " + result.id, {
+                swal("Registration Complete", "Your unique user ID is " + result.access_token, {
                     button: "OK",
                 });
             }

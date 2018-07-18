@@ -11,7 +11,13 @@ var Run = function()
    codeRunner(Draw, Colour);
 }
 
+var ConvertToImage = function()
+{
+    return Canvas.convertToImage();
+}
+
 window.ydoc = {
     Run, 
-    Canvas
+    Canvas,
+    ConvertToImage
 };
