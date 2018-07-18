@@ -35,7 +35,19 @@
     height: 10;
 }
 
+#newCanvas {
+    position: absolute;
+    top: 0;
+    right: 400px;
+    height: 10;
+}
 
+#canvas-id {
+    position: absolute;
+    top: 0;
+    right: 600px;
+    height: 10;
+}
 
 #iframe {
     position: absolute;

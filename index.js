@@ -1,10 +1,14 @@
 const endpoint = 'https://apiforyorkdayofcode.azurewebsites.net';
+const no_canvas_loaded = 'Not Saved';
+
+var currentCanvas = no_canvas_loaded;
 
 //number.degree.others
 //open.shake.collection
 
 function Initialise() {
     setUpEditor();
+    displayCanvasID();
     var previousCanvasDisplayed = displayCanvasIfSuppliedInQueryString();
     if (!previousCanvasDisplayed) startTour();  //see tour.js
 }
@@ -44,6 +48,13 @@ function getQueryStringVariable(variable) {
     }
 }
 
+function newCanvas() {
+    currentCanvas = no_canvas_loaded;
+    displayCanvasID();
+    setScript("");
+    run();
+}
+
 function load() {
     swal({
         title: "Load Canvas",
@@ -67,6 +78,8 @@ function loadCanvas(code) {
             if (xhr.status == 200) {
                 var result = JSON.parse(xhr.responseText);
                 setScript(result.code);
+                currentCanvas = result.code;
+                displayCanvasID();
                 run();
 
                 swal("Canvas Successfully Loaded", "Your canvas was successfully loaded", {
@@ -103,6 +116,8 @@ function save() {
         if (this.readyState == XMLHttpRequest.DONE) {
             if (xhr.status == 200) {
                 var result = JSON.parse(xhr.responseText);
+                currentCanvas = result.id;
+                displayCanvasID();
                 swal("Canvas Saved", "Your canvas has the name of " + result.id, {
                     button: "OK",
                 });
@@ -175,6 +190,10 @@ function getToken() {
     if (typeof(Storage) !== "undefined") {
         return localStorage.york_day_code_access_token;
     }
+}
+
+function displayCanvasID() {
+    document.getElementById('canvas-id').innerText = "Canvas : " + currentCanvas;
 }
 
 function getIframe() {
