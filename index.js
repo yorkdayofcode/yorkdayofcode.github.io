@@ -98,13 +98,24 @@ function loadCanvas(code) {
 }
 
 function save() {
-
+    
     var iframe = getIframe();
     var data =
     {
         "code": getScript(),
         "image": iframe.contentWindow.ydoc.ConvertToImage()
     }
+
+    if (currentCanvas === no_canvas_loaded) {
+        create(data);
+    }
+    else {
+        update(data);
+    }
+
+}
+
+function create(data) {
 
     var xhr = new XMLHttpRequest();
     xhr.open("POST", endpoint + '/api/canvasses', true);
@@ -119,6 +130,33 @@ function save() {
                 currentCanvas = result.id;
                 displayCanvasID();
                 swal("Canvas Saved", "Your canvas has the name of " + result.id, {
+                    button: "OK",
+                });
+            }
+            else {
+                swal("Canvas Not Saved", "A status code of " + xhr.status + " was reported. (" + xhr.responseText + ")", {
+                    button: "OK",
+                });
+            }
+        }
+    }
+
+    var json = JSON.stringify(data);
+    xhr.send(json);
+}
+
+function update(data) {
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("PUT", endpoint + '/api/canvasses/' + currentCanvas, true);
+
+    setContentTypeAsJson(xhr);
+    addBearerTokenToRequest(xhr);
+
+    xhr.onreadystatechange = function () {
+        if (this.readyState == XMLHttpRequest.DONE) {
+            if (xhr.status == 200) {
+                swal("Canvas Saved", "Your canvas has been updated", {
                     button: "OK",
                 });
             }
