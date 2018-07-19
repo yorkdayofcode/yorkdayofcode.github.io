@@ -15,18 +15,25 @@ var Line = function() {
     context.stroke();
 }
 
-var Circle = function(colour = Colour.Random(), size = 100, x = 100, y = 0) {
+var Circle = function(colour = Colour.Random(), diameter = 100, x = 100, y = 0, outline = false) {
     
     var context = Canvas.getContext();
+    let radius = diameter / 2; 
 
     context.beginPath();
-    context.arc(x, y, size, 0, 2 * Math.PI);
-    context.stroke();
+    context.arc(x + radius, y + radius, radius, 0, 2 * Math.PI);
+
+    if(outline){
+        context.lineWidth = 2;
+        context.strokeStyle = Colour.withName('grey');
+        context.stroke();
+    }
+
     context.fillStyle = colour;
     context.fill();
 }
 
-var Square = function(colour = Colour.Random(), size = 100, x = 100, y = 0, outline=false) {
+var Square = function(colour = Colour.Random(), size = 100, x = 100, y = 0, outline = false) {
 
     var context = Canvas.getContext();
 
@@ -41,9 +48,9 @@ var Square = function(colour = Colour.Random(), size = 100, x = 100, y = 0, outl
 
     // the outline
     if(outline){
-    context.lineWidth = 2;
-    context.strokeStyle = Colour.withName('grey');
-    context.stroke();
+        context.lineWidth = 2;
+        context.strokeStyle = Colour.withName('grey');
+        context.stroke();
     }
 
     // the fill color

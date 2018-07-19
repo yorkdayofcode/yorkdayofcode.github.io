@@ -11,7 +11,23 @@
 
 <body>
 
-    <div id="editor">Draw.Square(Colour.Green, 20, 50, 50);</div>
+    <div id="editor">
+        
+        //colours
+        let $green = Colour.withName("seagreen");
+        let $red = Colour.withName("crimson");
+        let $blue = Colour.withName("dodgerblue");
+        
+        let padding = 10;
+
+        //drawing
+        Draw.Square($green, 50, 50, 50);
+
+        Draw.Circle($red, 50, 50, 100 + padding);
+
+        Draw.Triangle($blue, 50, 50, 150 + padding);
+
+    </div>
 
     <div><span id="canvas-id"></span></div> 
 
