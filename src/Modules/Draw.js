@@ -62,11 +62,23 @@ var Triangle = function(colour = Colour.Random(), size = 100, x = 100, y = 0, ou
     
     var context = Canvas.getContext();
 
+
+    var x1,y1,x2,y2,x3,y3;
+
+    x1 = x;
+    y1 = y;
+
+    x2 = x;
+    y2 = y + size;
+
+    x3 = x + size;
+    y3 = y + size;
+
     // the triangle
     context.beginPath();
-    context.moveTo(x, y);
-    context.lineTo(x, y+size);
-    context.lineTo(x+size, y + (size * 2));
+    context.moveTo(x1, y1);
+    context.lineTo(x2, y2);
+    context.lineTo(x3, y3);
     context.closePath();
 
     // the outline
